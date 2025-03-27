@@ -1,20 +1,20 @@
 # Verifica con Camucha: Asistente Virtual para Verificación de Legitimidad
 
 ## 1. Introducción ✒️
-En la era digital actual, las estafas y fraudes en línea aumentan constantemente, especialmente en el sector financiero. Las personas de todas las edades están expuestas a mensajes y comunicaciones potencialmente fraudulentas. Es en este contexto que nace "Verifica con Camucha", un asistente virtual basado en IA que permite a los usuarios verificar la legitimidad de mensajes recibidos en diferentes formatos, brindando mayor seguridad y tranquilidad en sus transacciones digitales.
+En la era digital actual, las estafas y fraudes en línea aumentan constantemente, especialmente en el sector financiero. Las personas de todas las edades están expuestas a mensajes y comunicaciones potencialmente fraudulentas. Es en este contexto nace "Verifica con Camucha", un asistente virtual basado en IA que permite a los usuarios verificar la legitimidad de mensajes recibidos en diferentes formatos, brindando mayor seguridad y tranquilidad en sus transacciones digitales.
 
 ## 2. Resumen del proyecto 📝
 Este proyecto consiste en una aplicación web que utiliza inteligencia artificial para analizar y verificar la autenticidad de mensajes, correos electrónicos, capturas de pantalla y comunicaciones relacionadas con operaciones bancarias. La plataforma ofrece una interfaz amigable donde el usuario puede subir o pegar el contenido sospechoso y recibir una evaluación inmediata sobre su legitimidad, junto con recomendaciones de seguridad personalizadas.
 
 ## 3. Descripción del proyecto 📔
   * ¿Quiénes son los principales usuarios de Verifica con Camucha?
-Principalmente mujeres peruanas que priorizan la inmediatez en su día a día y confían en la banca móvil del BCP. Nuestros usuarios son personas que realizan transacciones financieras digitales de forma habitual y necesitan una herramienta confiable para verificar la legitimidad de las comunicaciones que reciben.
+    Principalmente mujeres peruanas que priorizan la inmediatez en su día a día y confían en la banca móvil del BCP. Nuestros usuarios son personas que realizan transacciones financieras digitales de forma habitual y necesitan una herramienta confiable para verificar la legitimidad de las comunicaciones que reciben.
 
-  * ¿Cuál es la necesidad o problema que Verifica con Camucha busca solucionar
+  * ¿Cuál es la necesidad o problema que Verifica con Camucha busca solucionar?
   La falta de herramientas accesibles para reconocer si el canal que solicita información financiera es oficial o no. Camucha ofrece una solución intuitiva que ayuda a evitar estafas y experiencias negativas con transacciones digitales financieras, proporcionando mayor protección y seguridad a los usuarios del banco.
 
 ### 3.1. Proceso creativo del diseño ⛱️
-El diseño de Verifica con Camucha se centró en crear una experiencia intuitiva y amigable, con un enfoque en la confianza y seguridad. El personaje de Camucha, representado por un gato detective, transmite tanto profesionalismo como cercanía.
+El diseño de Verifica con Camucha se centró en crear una experiencia intuitiva y amigable, con un enfoque en la confianza y seguridad. El personaje de Camucha, representado por un cuy detective, el personaje de Camucha, representado por un cuy detective con sombrero, transmite cercanía, confianza y un toque de identidad nacional. Su mirada atenta y postura observadora comunican su papel de guardián y aliado en la seguridad digital de los usuarios peruanos.
  *   Funcionamiento del servicio:
 
   El usuario ingresa a la web con la información que desea verificar, con la opción de enviar un texto, imagen o audio
@@ -30,8 +30,7 @@ El diseño de Verifica con Camucha se centró en crear una experiencia intuitiva
 
 * Vista Desktop 🖥️
 
- ![desktop](src/imagens/desktop.JPG)
- ![desktop](src/imagens/desktop-registro.JPG)
+
 
 ### 3.2.  Impacto esperado
 🧑‍💻 Reducción significativa de estafas financieras digitales entre los usuarios
