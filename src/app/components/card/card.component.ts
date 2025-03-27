@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss'
 })
@@ -12,5 +13,12 @@ export class CardComponent {
   @Input() icon!: string;
   @Input() title!: string;
   @Input() subtitle!: string;
+  @Input() isSelected: boolean = false;
+
+  @Output() cardClick = new EventEmitter<void>();
+
+  onClick() {
+    this.cardClick.emit();
+  }
 
 }

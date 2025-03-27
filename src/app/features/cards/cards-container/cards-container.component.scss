@@ -18,3 +18,114 @@
 
   scrollbar-width: none;
 }
+
+.container {
+  position: relative;
+}
+
+.paste-message-container {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.paste-message-input {
+  width: 100%;
+  min-height: 80px;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  resize: none;
+  font-family: inherit;
+  
+  &:focus {
+    outline: none;
+    border-color: #0047cc;
+    box-shadow: 0 0 0 2px rgba(0, 71, 204, 0.2);
+  }
+  
+  &::placeholder {
+    color: #999;
+  }
+}
+
+.actions-container {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.select-option {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.upload-option {
+  margin-top: 8px;
+  width: 100%;
+}
+
+.upload-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #f67280;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #f67280;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background-color: rgba(246, 114, 128, 0.1);
+  }
+  
+  .upload-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+  }
+}
+
+.analyzing-message {
+  margin-top: 16px;
+  color: #666;
+  font-style: italic;
+}
+
+// Botón flotante para móviles
+.floating-upload-button {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 100;
+  display: none;
+  
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+
+.circular-upload-button {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #ff6a00;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  
+  .upload-icon {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+  }
+}
