@@ -48,13 +48,13 @@ Creación de una base de datos de patrones de fraude para mejorar la detección 
 * Almacenamiento seguro de datos sensibles con encriptación avanzada
 * Interfaz responsive para óptima experiencia en dispositivos móviles y desktop
  ### 4.1 Herramientas 🛠️
- * Frontend: React.js para una interfaz dinámica y fluida
- * Backend: Node.js con Express para la lógica del servidor
+ * Frontend: Angular para una interfaz dinámica y fluida
+ * Backend: Next.js
  * IA: Implementación de modelos de machine learning para detección de fraudes
- * Almacenamiento: Firebase para autenticación y almacenamiento seguro
+ * Almacenamiento:
  * Diseño: Figma para prototipos y maquetación
  * Control de versiones: Git y GitHub
- * Testing: Jest para pruebas unitarias y de integración
+ * Testing: ... para pruebas unitarias y de integración
  * Gestión de proyecto: GitHub Projects para la planificación y seguimiento
  ### 4.2 Despliegue 📦
   * La aplicación está disponible en: viabcp.com/camucha
