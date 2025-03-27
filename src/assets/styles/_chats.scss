@@ -1,0 +1,19 @@
+// Estilos del chat de Camucha
+.camucha-chat {
+  background-color: $chat-bg;
+  font-size: 14px;
+  font-family: $font-regular;
+  color: #283847;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+// Estilos del chat del usuario
+.user-chat {
+  background-color: $user-chat-bg;
+  font-size: 14px;
+  font-family: $font-medium;
+  color: $user-text-color;
+  padding: 10px;
+  border-radius: 8px;
+}
