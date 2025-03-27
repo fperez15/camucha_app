@@ -15,9 +15,7 @@ Principalmente mujeres peruanas que priorizan la inmediatez en su día a día y 
 
 ### 3.1. Proceso creativo del diseño ⛱️
 El diseño de Verifica con Camucha se centró en crear una experiencia intuitiva y amigable, con un enfoque en la confianza y seguridad. El personaje de Camucha, representado por un gato detective, transmite tanto profesionalismo como cercanía.
-
-* Vista mobile 📱 Se realizaron los prototipos en Figma.
-  Funcionamiento del servicio:
+ *   Funcionamiento del servicio:
 
   El usuario ingresa a la web con la información que desea verificar, con la opción de enviar un texto, imagen o audio
   Selecciona la opción imagen (ejemplo: una captura de pantalla) y la sube a la plataforma
@@ -25,6 +23,9 @@ El diseño de Verifica con Camucha se centró en crear una experiencia intuitiva
   Proporciona como respuesta un reporte de seguridad del mensaje, especificando el nivel de riesgo mediante un sistema tipo semáforo
   Ofrece tips de ciberseguridad con pasos a seguir según el caso analizado
   Brinda la opción de reportar oficialmente el caso si se confirma como fraudulento
+
+* Vista mobile 📱 Se realizaron los prototipos en Figma.
+
 
 
 * Vista Desktop 🖥️
