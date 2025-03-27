@@ -1,1 +1,15 @@
 @import './assets/styles.scss';
+
+/* Asegúrate de aplicar el fondo al html y body */
+html, body {
+  height: 100%; /* Asegura que el html y body ocupen el 100% de la altura */
+  margin: 0;    /* Elimina el margen por defecto */
+  padding: 0;   /* Elimina el padding por defecto */
+}
+
+body {
+  background: linear-gradient(180deg, #FBFBFD 0%, #F1F4FB 100%);
+  display: flex;
+  min-height: 100vh;  /* Asegura que el body ocupe al menos el 100% de la altura de la ventana */
+  flex-direction: column;  /* Ayuda a que el contenido se acomode dentro del body */
+}

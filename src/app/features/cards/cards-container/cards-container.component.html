@@ -1,9 +1,25 @@
 <div class="container px-3">
   <div class="card-container d-flex flex-nowrap py-4">
-    <app-card *ngFor="let card of cards"
-              [icon]="card.icon"
-              [title]="card.title"
-              [subtitle]="card.subtitle">
+    <app-card
+      *ngFor="let card of cards"
+      [icon]="card.icon"
+      [title]="card.title"
+      [subtitle]="card.subtitle"
+    >
     </app-card>
+  </div>
+  <div>
+    <div>
+      Elige una opción
+    </div>
+    <div>
+      Sube la captura de pantalla
+      <span>
+        Subir captura
+      </span>
+    </div>
+    <div>
+      Analizando
+    </div>
   </div>
 </div>
