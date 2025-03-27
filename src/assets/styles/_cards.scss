@@ -1,0 +1,26 @@
+.card {
+  background: linear-gradient(180deg, #E1EAF4 0%, #FFFFFF 100%);
+  color: $color-dark;
+  font-family: $font-demibold;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 16px;
+  border-radius: 8px;
+
+  h3 {
+    font-family: $font-demibold;
+    color: $color-dark;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  p {
+    font-family: $font-regular;
+    color: $color-dark;
+    line-height: normal;
+  }
+
+  &.selected {
+    border: 1px solid $color-border;
+  }
+}
