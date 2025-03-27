@@ -1,0 +1,20 @@
+.card-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  scrollbar-width: none;
+}
