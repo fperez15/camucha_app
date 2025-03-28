@@ -1,9 +1,12 @@
 <div class="container px-3">
   <div class="d-flex flex-column align-items-center gap-3">
+
     <div class="card-container d-flex flex-nowrap py-4">
       <app-card *ngFor="let card of cards"
                 [icon]="card.icon"
-                [subtitle]="card.subtitle">
+                [subtitle]="card.subtitle"
+                (click)="onCardClick(card.id)"
+                >
       </app-card>
     </div>
 
@@ -11,8 +14,11 @@
       <textarea
         class="paste-message-input"
         placeholder="Copia y pega el mensaje sospechoso"
-        disabled
-      ></textarea>
+        [disabled]="!isTextareaEnabled">
+      </textarea>
+      <button *ngIf="isTextareaEnabled" class="upload-button">
+        <img src="assets/icons/upload.svg" alt="Subir" class="upload-icon"> Subir captura de pantalla
+      </button>
       <img src="assets/icons/button-send.svg" alt="Enviar" class="upload-icon" />
     </div>
   </div>
