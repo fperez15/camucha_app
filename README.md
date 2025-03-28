@@ -76,7 +76,7 @@ Ideación y votación entre el área UX y Programadores.
 * Almacenamiento seguro de datos sensibles con encriptación avanzada
 * Interfaz responsive para óptima experiencia en dispositivos móviles y desktop
   
- ### 11 Herramientas 🛠️
+ ## 11. Herramientas 🛠️
  * Frontend: Angular para una interfaz dinámica y fluida
  * Backend: Next.js
  * IA: Implementación de modelos de machine learning para detección de fraudes
@@ -85,8 +85,18 @@ Ideación y votación entre el área UX y Programadores.
  * Control de versiones: Git y GitHub
  * Testing: Pruebas unitarias y de integración
  * Gestión de proyecto: GitHub Projects para la planificación y seguimiento
+
+## 12. Modalidad de testeo 
+* Cantidad de encuestados: 30 personas
+• Flujo de prototipo
+![Image](https://github.com/user-attachments/assets/de0ec321-f40b-4fa3-b369-3c13d16b87f6)
+![Image](https://github.com/user-attachments/assets/1ded1a41-25f5-4a89-8fab-a2e9c0184c26)
+![Image](https://github.com/user-attachments/assets/7d782ef9-e8ad-46ac-bebc-4f11c85ea5d7)
+
+• Complementación de información (ejemplo)
+![Image](https://github.com/user-attachments/assets/35bc7ed3-f2a7-4d78-857b-58f9c4b303b7)
    
- ## 11. Equipo 🖋️
+ ## 13. Equipo 🖋️
   Somos el Squad 5 conformado por las siguientes personas: 
   * Ericka Gonzales (UX/UI)
   * Andrea Blasco (UX)
