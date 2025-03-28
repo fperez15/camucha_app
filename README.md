@@ -78,7 +78,7 @@ Ideación y votación entre el área UX y Programadores.
   
  ## 11. Herramientas 🛠️
  * Frontend: Angular para una interfaz dinámica y fluida
- * Backend: Next.js
+ * Backend: Nestjs
  * IA: Implementación de modelos de machine learning para detección de fraudes
  * Almacenamiento:
  * Diseño: Figma para prototipos y maquetación
