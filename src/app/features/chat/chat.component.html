@@ -3,19 +3,18 @@
     <div class="d-flex align-items-end gap-2 mt-2">
       <img src="assets/images/chamacuy.svg" alt="Camucha Cuy" class="avatar">
       <div class="camucha-chat">
-        ¡Hola! 👋 Soy Agente Cuy, tu asistente experta en seguridad financiera 🕵️‍♀️. Estoy aquí para ayudarte a identificar posibles fraudes y protegerte de estafas.
+        ¡Hola! 👋 Soy Agente Cuy, tu asistente experta en seguridad financiera 🕵‍♀. Estoy aquí para ayudarte a identificar posibles fraudes y protegerte de estafas.
       </div>
     </div>
-
     <div class="mt-3">
       <div *ngFor="let msg of messages" class="d-flex align-items-end gap-2 mt-2"
         [ngClass]="{'flex-row-reverse': msg.sender === 'user'}">
-
         <img *ngIf="msg.sender === 'bot'" src="assets/images/chamacuy.svg" alt="Camucha Cuy" class="avatar">
-        <div [ngClass]="{'camucha-chat': msg.sender === 'bot', 'user-chat': msg.sender === 'user'}"
-             [innerHTML]="msg.text | linkify">
-        </div>
+        <div [ngClass]="{'camucha-chat': msg.sender === 'bot', 'user-chat': msg.sender === 'user'}">
+          <div *ngIf="isString(msg.text)" [innerHTML]="msg.text | linkify"></div>
+          <div *ngIf="!isString(msg.text)" [innerHTML]="msg.text"></div>
+        </div>
       </div>
-    </div>
+    </div>
   </div>
 </div>

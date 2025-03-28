@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChatServiceService } from '../../../services/chat-service.service';
 import { FraudDetectionService } from '../../../services/fraud-detection.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-cards-container',
@@ -14,9 +15,8 @@ import { FraudDetectionService } from '../../../services/fraud-detection.service
 })
 export class CardsContainerComponent implements OnInit {
 
-
   cards = [
-    { id: 1, icon: 'assets/icons/upload.svg', subtitle: 'Analizar mensaje sospechoso' },
+    { id: 1, icon: 'assets/icons/bubble-chat-search.svg', subtitle: 'Analizar mensaje sospechoso' },
     { id: 2, icon: 'assets/icons/security.svg', subtitle: 'Aprender tips de seguridad.' },
   ];
 
@@ -28,7 +28,9 @@ export class CardsContainerComponent implements OnInit {
   messages: { text: string, sender: 'bot' | 'user' }[] = [];
 
   constructor(private chatService: ChatServiceService,
-    private fraudDetectionService: FraudDetectionService) {}
+    private fraudDetectionService: FraudDetectionService,
+    private sanitizer: DomSanitizer
+  ) {}
 
   ngOnInit() {
 
@@ -66,7 +68,7 @@ sendMessage() {
     this.fraudDetectionService.analyzeText(this.messageText).subscribe({
       next: (response) => {
         this.handleAnalysisResponse(response);
-        this.messageText = ''; // Limpiar el campo de texto
+        this.messageText = '';
         this.isLoading = false;
       },
       error: (error) => {
@@ -80,54 +82,62 @@ sendMessage() {
     }
   }
 
-  // Método para manejar la subida de archivos
-  uploadImage(event: Event) {
-    const input = event.target as HTMLInputElement;
+// Método para manejar la subida de archivos
+uploadImage(event: Event) {
+  const input = event.target as HTMLInputElement;
 
-    if (input.files && input.files.length > 0) {
-      const file = input.files[0];
+  if (input.files && input.files.length > 0) {
+    const file = input.files[0];
 
-      // Verificar que sea una imagen válida
-      if (!file.type.match('image/(jpeg|jpg|png|webp)')) {
-        this.chatService.addMessages([
-          { text: 'Por favor, sube solo archivos de imagen (.jpg, .jpeg, .png, .webp)', sender: 'bot' }
-        ]);
-        return;
-      }
-
-      // Verificar el tamaño del archivo (máximo 5MB)
-      if (file.size > 5 * 1024 * 1024) {
-        this.chatService.addMessages([
-          { text: 'La imagen es demasiado grande. El tamaño máximo permitido es 5MB.', sender: 'bot' }
-        ]);
-        return;
-      }
-
-      // Añadir mensaje indicando que se está subiendo una imagen
+    // Verificar que sea una imagen válida
+    if (!file.type.match('image/(jpeg|jpg|png|webp)')) {
       this.chatService.addMessages([
-        { text: 'Imagen subida para análisis', sender: 'user' }
+        { text: 'Por favor, sube solo archivos de imagen (.jpg, .jpeg, .png, .webp)', sender: 'bot' }
       ]);
+      return;
+    }
 
-      this.isLoading = true;
+    // Verificar el tamaño del archivo (máximo 5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      this.chatService.addMessages([
+        { text: 'La imagen es demasiado grande. El tamaño máximo permitido es 5MB.', sender: 'bot' }
+      ]);
+      return;
+    }
 
-      // Enviar la imagen para análisis real
-      this.fraudDetectionService.analyzeImage(file).subscribe({
-        next: (response) => {
-          this.handleAnalysisResponse(response);
-          this.isLoading = false;
-        },
-        error: (error) => {
-          console.error('Error al analizar la imagen:', error);
-          this.chatService.addMessages([
-            { text: 'Ocurrió un error al analizar la imagen. Por favor, intenta de nuevo más tarde.', sender: 'bot' }
-          ]);
-          this.isLoading = false;
-        }
-      });
+    // Crear una URL para la vista previa de la imagen
+    const imageUrl = URL.createObjectURL(file);
 
-      input.value = '';
-    }
+    // Crear HTML seguro usando DomSanitizer
+    const safeHtml = this.sanitizer.bypassSecurityTrustHtml(
+      `<div class="image-preview"><img src="${imageUrl}" alt="Imagen subida" class="uploaded-image" style="width: 80%; max-width: 400px; height: auto; border-radius: 8px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);"></div>Imagen subida para análisis`
+    );
+
+    // Añadir mensaje con la imagen como SafeHtml
+    this.chatService.addMessages([
+      { text: safeHtml, sender: 'user' }
+    ]);
+
+    this.isLoading = true;
+
+    // Enviar la imagen para análisis
+    this.fraudDetectionService.analyzeImage(file).subscribe({
+      next: (response) => {
+        this.handleAnalysisResponse(response);
+        this.isLoading = false;
+      },
+      error: (error) => {
+        console.error('Error al analizar la imagen:', error);
+        this.chatService.addMessages([
+          { text: 'Ocurrió un error al analizar la imagen. Por favor, intenta de nuevo más tarde.', sender: 'bot' }
+        ]);
+        this.isLoading = false;
+      }
+    });
+
+    input.value = '';
   }
+}
 
 // Método para manejar la respuesta del análisis (tanto de texto como de imagen)
 private handleAnalysisResponse(response: any) {
