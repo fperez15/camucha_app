@@ -34,7 +34,7 @@ Una (mujer peruana que priorizan la inmediatez en su día a día, y confían en 
 
 ### 6. Método de síntesis de Research: User persona & Customer Journey Map 
 
-![Image](https://github.com/user-attachments/assets/9b34d42e-add3-4b66-a8a8-3da4699c7772)
+![Image](https://github.com/user-attachments/assets/486d1eaa-5b49-44a3-a302-2b0649e39bac)
 
 ### 6. Ideación 
 
@@ -75,7 +75,8 @@ Ideación y votación entre el área UX y Programadores.
 * Integración con APIs de seguridad bancaria para validación en tiempo real
 * Almacenamiento seguro de datos sensibles con encriptación avanzada
 * Interfaz responsive para óptima experiencia en dispositivos móviles y desktop
- ### 10.1 Herramientas 🛠️
+  
+ ### 11 Herramientas 🛠️
  * Frontend: Angular para una interfaz dinámica y fluida
  * Backend: Next.js
  * IA: Implementación de modelos de machine learning para detección de fraudes
@@ -85,15 +86,18 @@ Ideación y votación entre el área UX y Programadores.
  * Testing: Pruebas unitarias y de integración
  * Gestión de proyecto: GitHub Projects para la planificación y seguimiento
    
-
-
- ## 5. Equipo de desarrollo 🖋️
+ ## 11. Equipo 🖋️
   Somos el Squad 5 conformado por las siguientes personas: 
   * Ericka Gonzales (UX/UI)
   * Andrea Blasco (UX)
   * Francis Pérez (Frontend Dev)
   * Miluska Romero (Backend Dev)
   * Angélica López (Full Stack)
+  Agradecimiento a las siguientes personas: 
+  * Faroukh Asayag (Tutor)
+  * Ivy y Sebastian (Coachs de consulta técnica)
+
+
   
 
 
