@@ -3,6 +3,7 @@ import { CardComponent } from '../../../components/card/card.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChatServiceService } from '../../../services/chat-service.service';
+import { FraudDetectionService } from '../../../services/fraud-detection.service';
 
 @Component({
   selector: 'app-cards-container',
@@ -22,61 +23,135 @@ export class CardsContainerComponent implements OnInit {
   isTextareaEnabled = false;
   showCards = true;
   messageText = '';
+  isLoading = false;
 
-  constructor(private chatService: ChatServiceService) {}
+  messages: { text: string, sender: 'bot' | 'user' }[] = [];
+
+  constructor(private chatService: ChatServiceService,
+    private fraudDetectionService: FraudDetectionService) {}
 
   ngOnInit() {
-    // Suscribirse a los cambios en la visibilidad de las tarjetas
+
     this.chatService.showCards$.subscribe(show => {
       this.showCards = show;
     });
 
-    // Suscribirse a los cambios en el estado del textarea
     this.chatService.textareaEnabled$.subscribe(enabled => {
       this.isTextareaEnabled = enabled;
     });
   }
 
   onCardClick(id: number) {
-    // Usar el servicio para manejar la selección de tarjetas
-    //this.chatService.handleCardSelection(id);
+
     if (id === 1) {
       this.isTextareaEnabled = true;
       this.showCards = false;
-      // Emitir evento al servicio o componente padre
       this.chatService.handleCardSelection(id);
     } else if (id === 2) {
       this.showCards = false;
-      // Emitir evento al servicio o componente padre
       this.chatService.handleCardSelection(id);
     }
   }
 
-  // Método para manejar el envío del mensaje de texto
-  sendMessage() {
-    if (this.messageText.trim()) {
-      // Añadir el mensaje del usuario
-      this.chatService.addMessages([
-        { text: this.messageText, sender: 'user' }
-      ]);
-      this.messageText = '';
+// Método para enviar un mensaje de texto para análisis
+sendMessage() {
+  if (this.messageText.trim()) {
 
-      // Simular respuesta del bot
-      setTimeout(() => {
+    this.chatService.addMessages([
+      { text: this.messageText, sender: 'user' }
+    ]);
+
+    this.isLoading = true;
+
+    this.fraudDetectionService.analyzeText(this.messageText).subscribe({
+      next: (response) => {
+        this.handleAnalysisResponse(response);
+        this.messageText = ''; // Limpiar el campo de texto
+        this.isLoading = false;
+      },
+      error: (error) => {
+        console.error('Error al analizar el texto:', error);
         this.chatService.addMessages([
-          { text: 'Estoy analizando tu mensaje...', sender: 'bot' }
+          { text: 'Ocurrió un error al analizar el mensaje. Por favor, intenta de nuevo más tarde.', sender: 'bot' }
         ]);
-      }, 500);
+        this.isLoading = false;
+      }
+    });
+    }
+  }
+
+  // Método para manejar la subida de archivos
+  uploadImage(event: Event) {
+    const input = event.target as HTMLInputElement;
+
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0];
+
+      // Verificar que sea una imagen válida
+      if (!file.type.match('image/(jpeg|jpg|png|webp)')) {
+        this.chatService.addMessages([
+          { text: 'Por favor, sube solo archivos de imagen (.jpg, .jpeg, .png, .webp)', sender: 'bot' }
+        ]);
+        return;
+      }
+
+      // Verificar el tamaño del archivo (máximo 5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        this.chatService.addMessages([
+          { text: 'La imagen es demasiado grande. El tamaño máximo permitido es 5MB.', sender: 'bot' }
+        ]);
+        return;
+      }
+
+      // Añadir mensaje indicando que se está subiendo una imagen
+      this.chatService.addMessages([
+        { text: 'Imagen subida para análisis', sender: 'user' }
+      ]);
+
+      this.isLoading = true;
+
+      // Enviar la imagen para análisis real
+      this.fraudDetectionService.analyzeImage(file).subscribe({
+        next: (response) => {
+          this.handleAnalysisResponse(response);
+          this.isLoading = false;
+        },
+        error: (error) => {
+          console.error('Error al analizar la imagen:', error);
+          this.chatService.addMessages([
+            { text: 'Ocurrió un error al analizar la imagen. Por favor, intenta de nuevo más tarde.', sender: 'bot' }
+          ]);
+          this.isLoading = false;
+        }
+      });
+
+      input.value = '';
+    }
+  }
+
+// Método para manejar la respuesta del análisis (tanto de texto como de imagen)
+private handleAnalysisResponse(response: any) {
+  let completeMessage = `${response.message}`;
+  if (response.isFraudCase) {
+    completeMessage += `\n\n<span class="risk-label">📊 Nivel de riesgo:</span> <span class="risk-value">🚨 ¡${response.nivel_riesgo} riesgo de fraude!</span>`;
+
+    if (response.tips_seguridad && response.tips_seguridad.length > 0) {
+      completeMessage += `\n\nConsejos de seguridad:`;
+      response.tips_seguridad.forEach((tip: string, index: number) => {
+        completeMessage += `\n${index + 1}. ${tip}`;
+      });
+    }
+
+    if (response.enlaces && response.enlaces.length > 0) {
+      completeMessage += `\n\nEnlaces útiles:`;
+      response.enlaces.forEach((link: string, index: number) => {
+        completeMessage += `\n${index + 1}. ${link}`;
+      });
     }
   }
 
-  // Método para manejar la subida de archivos
-  uploadImage() {
-    console.log('Subir imagen solicitado');
-    // Simular respuesta del bot
-    this.chatService.addMessages([
-      { text: 'Subiendo imagen...', sender: 'user' },
-      { text: 'Analizando la imagen...', sender: 'bot' }
-    ]);
-  }
+  this.chatService.addMessages([
+    { text: completeMessage, sender: 'bot' }
+  ]);
+}
 }

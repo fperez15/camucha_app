@@ -6,6 +6,7 @@
   color: #283847;
   padding: 10px;
   border-radius: 8px;
+  white-space: pre-line
 }
 
 // Estilos del chat del usuario
@@ -16,4 +17,22 @@
   color: $user-text-color;
   padding: 10px;
   border-radius: 8px;
+}
+
+
+// Estilos para enlaces y etiquetas de riesgo
+.chat-link {
+  color: #0039a6;
+  text-decoration: underline;
+  word-break: break-all;
+  font-weight: 500;
+}
+
+.risk-label {
+  font-weight: bold;
+}
+
+.risk-value {
+  color: #e60000;
+  font-weight: 500;
 }
