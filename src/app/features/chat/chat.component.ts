@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { CardsContainerComponent } from "../cards/cards-container/cards-container.component";
 import { ChatServiceService } from '../../services/chat-service.service';
 import { LinkifyPipe } from '../../pipes/linkify.pipe';
+import { SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-chat',
@@ -13,7 +14,7 @@ import { LinkifyPipe } from '../../pipes/linkify.pipe';
 })
 export class ChatComponent implements OnInit {
 
-  messages: { text: string, sender: 'bot' | 'user' }[] = [];
+  messages: { text: string | SafeHtml, sender: 'bot' | 'user' }[] = [];
 
   constructor(private chatService: ChatServiceService) {}
 
@@ -21,5 +22,9 @@ export class ChatComponent implements OnInit {
     this.chatService.messages$.subscribe(messages => {
       this.messages = messages;
     });
+  }
+
+isString(val: any): boolean {
+  return typeof val === 'string';
   }
 }
