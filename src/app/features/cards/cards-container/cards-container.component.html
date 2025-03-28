@@ -1,25 +1,58 @@
 <div class="container px-3">
-  <div class="card-container d-flex flex-nowrap py-4">
-    <app-card
-      *ngFor="let card of cards"
-      [icon]="card.icon"
-      [title]="card.title"
-      [subtitle]="card.subtitle"
-    >
-    </app-card>
-  </div>
-  <div>
-    <div>
-      Elige una opción
+  <div class="d-flex flex-column align-items-center gap-3">
+    <div *ngIf="showCards" class="card-container d-flex flex-nowrap py-4">
+      <app-card *ngFor="let card of cards"
+                [icon]="card.icon"
+                [subtitle]="card.subtitle"
+                (click)="onCardClick(card.id)">
+      </app-card>
     </div>
-    <div>
-      Sube la captura de pantalla
-      <span>
-        Subir captura
-      </span>
-    </div>
-    <div>
-      Analizando
+    <div class="paste-message-container">
+      <div class="input-wrapper" style="background-color: white; padding: 10px; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+        <div style="display: flex; align-items: center; gap: 10px; flex-grow: 1;">
+          <input
+            type="file"
+            #fileInput
+            accept="image/jpeg,image/jpg,image/png,image/webp"
+            style="display: none"
+            (change)="uploadImage($event)">
+
+          <button *ngIf="isTextareaEnabled"
+                  class="upload-button"
+                  [disabled]="isLoading"
+                  (click)="fileInput.click()">
+            <img src="assets/icons/upload.svg" alt="Subir" class="upload-icon"> Subir captura de pantalla
+          </button>
+          <input type="text"
+                 class="paste-message-input"
+                 placeholder="Pega el mensaje sospechoso..."
+                 [(ngModel)]="messageText"
+                 [disabled]="!isTextareaEnabled"
+                 style="flex-grow: 1; background: white; border: none; outline: none; color: gray; padding: 5px;">
+        </div>
+        <div class="send-icon-container"
+             [class.disabled]="!isTextareaEnabled || !messageText.trim() || isLoading"
+             (click)="messageText.trim() && isTextareaEnabled && !isLoading && sendMessage()"
+             style="background-color: orange; border-radius: 50%; padding: 10px; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; cursor: pointer;">
+          <img src="assets/icons/button-send.svg" alt="Enviar" class="upload-icon" />
+        </div>
+      </div>
+      <div *ngIf="isLoading" class="loading-indicator" style="display: flex; align-items: center; justify-content: center; margin-top: 15px;">
+        <div class="spinner" style="width: 20px; height: 20px; border: 2px solid #ddd; border-top: 2px solid #0039a6; border-radius: 50%; animation: spin 1s linear infinite; margin-right: 10px;"></div>
+        <span style="font-size: 14px; color: #666;">Analizando...</span>
+      </div>
     </div>
   </div>
 </div>
+
+<style>
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed !important;
+}
+</style>

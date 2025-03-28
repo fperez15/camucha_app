@@ -1,6 +1,4 @@
 .custom-card {
-  flex: 0 0 auto;
-  width: 244.5px;
   height: 148px;
   padding: 16px;
 
@@ -11,8 +9,6 @@
   }
 
   @media (max-width: 768px) {
-    flex: 0 0 auto;
-    width: 128px;
     height: 114px;
     padding: 8px;
 

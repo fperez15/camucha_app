@@ -1,6 +1,6 @@
 .card-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 16px;
   overflow: hidden;
 
@@ -17,4 +17,68 @@
   }
 
   scrollbar-width: none;
+}
+
+.paste-message-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.paste-message-input {
+  width: 100%;
+  max-width: 100%;
+  min-height: 80px;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  resize: none;
+  font-family: inherit;
+
+  &:focus {
+    outline: none;
+    border-color: #0047cc;
+    box-shadow: 0 0 0 2px rgba(0, 71, 204, 0.2);
+  }
+
+  &::placeholder {
+    color: #999;
+  }
+}
+
+.send-icon {
+  position: absolute;
+  right: 68px;
+  top: 92%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.upload-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #f67280;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #f67280;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: rgba(246, 114, 128, 0.1);
+  }
+
+  .upload-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+  }
 }
