@@ -16,7 +16,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class CardsContainerComponent implements OnInit {
 
   cards = [
-    { id: 1, icon: 'assets/icons/upload.svg', subtitle: 'Analizar mensaje sospechoso' },
+    { id: 1, icon: 'assets/icons/bubble-chat-search.svg', subtitle: 'Analizar mensaje sospechoso' },
     { id: 2, icon: 'assets/icons/security.svg', subtitle: 'Aprender tips de seguridad.' },
   ];
 
@@ -68,7 +68,7 @@ sendMessage() {
     this.fraudDetectionService.analyzeText(this.messageText).subscribe({
       next: (response) => {
         this.handleAnalysisResponse(response);
-        this.messageText = ''; // Limpiar el campo de texto
+        this.messageText = '';
         this.isLoading = false;
       },
       error: (error) => {
@@ -110,7 +110,7 @@ uploadImage(event: Event) {
 
     // Crear HTML seguro usando DomSanitizer
     const safeHtml = this.sanitizer.bypassSecurityTrustHtml(
-      `<div class="image-preview"><img src="${imageUrl}" alt="Imagen subida" class="uploaded-image"></div>Imagen subida para análisis`
+      `<div class="image-preview"><img src="${imageUrl}" alt="Imagen subida" class="uploaded-image" style="width: 80%; max-width: 400px; height: auto; border-radius: 8px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);"></div>Imagen subida para análisis`
     );
 
     // Añadir mensaje con la imagen como SafeHtml

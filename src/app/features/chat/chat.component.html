@@ -11,11 +11,10 @@
         [ngClass]="{'flex-row-reverse': msg.sender === 'user'}">
         <img *ngIf="msg.sender === 'bot'" src="assets/images/chamacuy.svg" alt="Camucha Cuy" class="avatar">
         <div [ngClass]="{'camucha-chat': msg.sender === 'bot', 'user-chat': msg.sender === 'user'}">
-
           <div *ngIf="isString(msg.text)" [innerHTML]="msg.text | linkify"></div>
           <div *ngIf="!isString(msg.text)" [innerHTML]="msg.text"></div>
         </div>
       </div>
     </div>
-  </div>
+  </div>
 </div>
