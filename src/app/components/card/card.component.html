@@ -1,10 +1,4 @@
-
-<div class="card" [ngClass]="{'card-selected': isSelected}" (click)="onClick()">
-  <div class="card-icon">
-    <img [src]="icon" alt="Icon" class="icon-image">
-  </div>
-  <div class="card-content">
-    <div class="card-title">{{ title }}</div>
-    <div class="card-subtitle">{{ subtitle }}</div>
-  </div>
+<div class="custom-card">
+  <img src="{{ icon }}" alt="Icono" class="card-icon">
+  <p class="card-subtitle">{{ subtitle }}</p>
 </div>

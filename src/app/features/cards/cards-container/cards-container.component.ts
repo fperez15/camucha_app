@@ -12,51 +12,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class CardsContainerComponent {
 
-  // Estado para controlar qué opción está seleccionada
-  selectedCardId: number | null = null;
-  
-  // Estado para el mensaje sospechoso
-  suspiciousMessage: string = '';
-  
-  // Estado para mostrar diferentes secciones
-  showPasteMessage: boolean = false;
-  showUploadOption: boolean = false;
-  isAnalyzing: boolean = false;
-
   cards = [
-    { id: 1, icon: 'assets/icons/upload.svg', title: 'Analiza y reporta un mensaje sospechoso', subtitle: 'Subiendo una captura de pantalla.' },
-    { id: 2, icon: 'assets/icons/copy.svg', title: 'Aprender tips de seguridad', subtitle: 'Y evitar posibles fraudes financieros.' },
-    // { id: 3,icon: 'assets/icons/alert.svg', title: 'Reportar mensaje fraudulento', subtitle: 'Al buzon de alertas del BCP.' },
-    // { id: 4, icon: 'assets/icons/safe.svg', title: 'Aprender tips de seguridad', subtitle: 'Y evitar posibles fraudes financieros.' }
+    { icon: 'assets/icons/upload.svg', subtitle: 'Analizar mensaje sospechoso' },
+    { icon: 'assets/icons/security.svg', subtitle: 'Aprender tips de seguridad.' },
   ];
-
-
-onCardClick(cardId :number): void {
-  this.selectedCardId = cardId;
-
-  // Mostrar la sección correspondiente según la tarjeta seleccionada
-  if(cardId === 1){
-    this.showPasteMessage = true;
-    this.showUploadOption = true;
-    this.isAnalyzing = false;
-  } else {
-    this.showPasteMessage = false;
-    this.showUploadOption = false;
-    this.isAnalyzing = false;
-  }
-  }
-
-  // Método para manejar la carga de una captura de pantalla
-  uploadScreenshot(): void {
-    // Simular el inicio del análisis
-    this.isAnalyzing = true;
-    this.showUploadOption = false;
-    
-    // Aquí podrías agregar la lógica real para cargar la imagen
-    // Por ejemplo, un temporizador para simular el análisis
-    setTimeout(() => {
-      this.isAnalyzing = false;
-      // Aquí podrías agregar lógica adicional tras el "análisis"
-    }, 2000);
-}
 }

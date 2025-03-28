@@ -1,14 +1,70 @@
+// .custom-card {
+//   background: linear-gradient(180deg, #E1EAF4 0%, #FFFFFF 100%);
+//   color: $color-dark;
+//   font-family: $font-demibold;
+//   font-size: 12px;
+//   line-height: 16px;
+//   padding: 16px;
+//   border-radius: 8px;
+//   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+//   border: 1px solid transparent;
+//   transition: transform 0.3s ease-in-out;
+
+//   &:hover {
+//     transform: scale(1.05);
+//   }
+
+//   &.selected {
+//     border-color: #F2885E;
+//   }
+
+//   .card-title {
+//     font-family: $font-demibold;
+//     font-size: 12px;
+//     color: #394E62;
+//     line-height: 16px;
+
+//     @media (min-width: 768px) {
+//        font-size: 16px;
+//     }
+//   }
+
+//   .card-subtitle {
+//     font-family: $font-regular;
+//     font-size: 12px;
+//     color: #394E62;
+//     line-height: normal;
+
+//     @media (min-width: 768px) {
+//       font-size: 14px;
+//    }
+//   }
+
+//   .icon-responsive {
+//     width: 16px;
+//     height: 16px;
+
+//     @media (min-width: 768px) {
+//       width: 21px;
+//       height: 21px;
+//     }
+//   }
+// }
+
+
 .custom-card {
   background: linear-gradient(180deg, #E1EAF4 0%, #FFFFFF 100%);
   color: $color-dark;
   font-family: $font-demibold;
   font-size: 12px;
   line-height: 16px;
-  padding: 16px;
   border-radius: 8px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   border: 1px solid transparent;
   transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   &:hover {
     transform: scale(1.05);
@@ -25,19 +81,19 @@
     line-height: 16px;
 
     @media (min-width: 768px) {
-       font-size: 16px;
+      font-size: 16px;
     }
   }
 
   .card-subtitle {
     font-family: $font-regular;
-    font-size: 12px;
+    font-size: 14px;
     color: #394E62;
     line-height: normal;
 
     @media (min-width: 768px) {
-      font-size: 14px;
-   }
+      font-size: 16px;
+    }
   }
 
   .icon-responsive {
@@ -50,3 +106,20 @@
     }
   }
 }
+
+@media (max-width: 767px) {
+  .custom-card {
+    width: 144px;
+    height: 72px;
+    padding: 8px;
+  }
+}
+
+@media (min-width: 768px) {
+  .custom-card {
+    width: 499px;
+    height: 131px;
+    padding: 16px;
+  }
+}
+

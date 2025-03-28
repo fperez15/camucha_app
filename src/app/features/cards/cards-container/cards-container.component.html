@@ -1,52 +1,20 @@
 <div class="container px-3">
-    <!-- Contenedor de tarjetas -->
-  <div class="card-container d-flex flex-nowrap py-4">
-    <app-card
-      *ngFor="let card of cards"
-      [icon]="card.icon"
-      [title]="card.title"
-      [subtitle]="card.subtitle"
-      [isSelected]="selectedCardId === card.id"
-      (cardClick)="onCardClick(card.id)"
-    >
-    </app-card>
-  </div>
-
-  <!-- Sección para copiar y pegar mensaje sospechoso -->
-  <div *ngIf="showPasteMessage" class="paste-message-container">
-    <textarea
-      class="paste-message-input"
-      placeholder="Copia y pega el mensaje sospechoso"
-      [(ngModel)]="suspiciousMessage"
-    ></textarea>
-  </div>
-
-  <!-- Sección para instrucciones y botones -->
-  <div class="actions-container">
-      <!-- Mensaje de selección -->
-    <div *ngIf="!selectedCardId" class="select-option">
-      Elige una opción
+  <div class="d-flex flex-column align-items-center gap-3">
+    <div class="card-container d-flex flex-nowrap py-4">
+      <app-card *ngFor="let card of cards"
+                [icon]="card.icon"
+                [subtitle]="card.subtitle">
+      </app-card>
     </div>
 
-    <!-- Botón para subir captura -->
-    <div *ngIf="showUploadOption" class="upload-option">
-    <button class="upload-button" (click)="uploadScreenshot()">
-      <img src="assets/icons/upload.svg" alt="Upload" class="upload-icon">
-      Subir captura de pantalla
-    </button>
+    <div class="paste-message-container">
+      <textarea
+        class="paste-message-input"
+        placeholder="Copia y pega el mensaje sospechoso"
+        disabled
+      ></textarea>
+      <img src="assets/icons/button-send.svg" alt="Enviar" class="upload-icon" />
+    </div>
   </div>
 
-  <!-- Mensaje de análisis -->
-  <div *ngIf="isAnalyzing" class="analyzing-message">
-    Analizando...
-  </div>
 </div>
-
-<!-- Botón flotante para pantallas pequeñas -->
-<div *ngIf="showUploadOption" class="floating-upload-button">
-  <button class="circular-upload-button" (click)="uploadScreenshot()">
-    <img src="assets/icons/upload.svg" alt="Upload" class="upload-icon">
-  </button>
-</div>
-</div>
-

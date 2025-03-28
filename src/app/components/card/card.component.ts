@@ -13,12 +13,5 @@ export class CardComponent {
   @Input() icon!: string;
   @Input() title!: string;
   @Input() subtitle!: string;
-  @Input() isSelected: boolean = false;
-
-  @Output() cardClick = new EventEmitter<void>();
-
-  onClick() {
-    this.cardClick.emit();
-  }
 
 }
